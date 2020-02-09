@@ -40,7 +40,7 @@ func (api ZeitAPI) CheckDomainAvailibility(name string) (*resty.Response, error)
 }
 
 func (api ZeitAPI) BuyDomain(name string, expectedPrice int) (*resty.Response, error) {
-	return api.post("/v2/domains/buy", map[string]interface{}{
+	return api.post("/v4/domains/buy", map[string]interface{}{
 		"name":          name,
 		"expectedPrice": expectedPrice,
 	})
