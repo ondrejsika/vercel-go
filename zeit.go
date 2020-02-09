@@ -26,3 +26,8 @@ func (api ZeitAPI) post(url string, body map[string]interface{}) (*resty.Respons
 	client := resty.New()
 	return client.R().SetAuthToken(api.token).SetBody(body).Post(api.apiOrigin + url)
 }
+
+func (api ZeitAPI) delete(url string) (*resty.Response, error) {
+	client := resty.New()
+	return client.R().SetAuthToken(api.token).Delete(api.apiOrigin + url)
+}
