@@ -22,6 +22,10 @@ type ListDomainsResponse struct {
 	} `json:"domains"`
 }
 
+type CheckDomainAvailibilityResponse struct {
+	Available bool `json:"available"`
+}
+
 type DomainPriceResponse struct {
 	Price  int `json:"price"`
 	Period int `json:"domain"`

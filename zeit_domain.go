@@ -31,3 +31,17 @@ func (api ZeitAPI) GetDomainPrice(name string) (*DomainPriceResponse, error) {
 	}
 	return nil, api.unmarshalErrorResponse(respBody)
 }
+
+func (api ZeitAPI) CheckDomainAvailibility(name string) (*CheckDomainAvailibilityResponse, error) {
+	rawResp, err := api.RawCheckDomainAvailibility(name)
+	if err != nil {
+		return nil, err
+	}
+	respBody := rawResp.Body()
+	if rawResp.StatusCode() == 200 {
+		var resp CheckDomainAvailibilityResponse
+		json.Unmarshal([]byte(respBody), &resp)
+		return &resp, nil
+	}
+	return nil, api.unmarshalErrorResponse(respBody)
+}
