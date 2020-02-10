@@ -1,6 +1,11 @@
 package zeit
 
-import "github.com/go-resty/resty/v2"
+import (
+	"encoding/json"
+	"fmt"
+
+	"github.com/go-resty/resty/v2"
+)
 
 type ZeitAPI struct {
 	token     string
@@ -32,9 +37,15 @@ func (api ZeitAPI) delete(url string) (*resty.Response, error) {
 	return client.R().SetAuthToken(api.token).Delete(api.apiOrigin + url)
 }
 
-type ErrorResponse struct {
+type errorResponse struct {
 	Error struct {
 		Code    string `json:"code"`
 		Message string `json:"message"`
 	} `json:"error"`
+}
+
+func (api ZeitAPI) unmarshalErrorResponse(respBody []byte) error {
+	var resp errorResponse
+	json.Unmarshal([]byte(respBody), &resp)
+	return fmt.Errorf("Zeit API Error: %s: %s", resp.Error.Code, resp.Error.Message)
 }

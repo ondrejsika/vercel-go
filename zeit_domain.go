@@ -2,7 +2,6 @@ package zeit
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"github.com/go-resty/resty/v2"
 )
@@ -44,9 +43,7 @@ func (api ZeitAPI) ListDomains() (*ListDomainsResponse, error) {
 		json.Unmarshal([]byte(respBody), &resp)
 		return &resp, nil
 	}
-	var resp ErrorResponse
-	json.Unmarshal([]byte(respBody), &resp)
-	return nil, fmt.Errorf("Zeit API Error: %s: %s", resp.Error.Code, resp.Error.Message)
+	return nil, api.unmarshalErrorResponse(respBody)
 }
 
 func (api ZeitAPI) RawAddDomain(name string) (*resty.Response, error) {
