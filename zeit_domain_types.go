@@ -21,3 +21,8 @@ type ListDomainsResponse struct {
 		} `json:"creator"`
 	} `json:"domains"`
 }
+
+type DomainPriceResponse struct {
+	Price  int `json:"price"`
+	Period int `json:"domain"`
+}
