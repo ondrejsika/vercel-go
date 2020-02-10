@@ -31,3 +31,10 @@ func (api ZeitAPI) delete(url string) (*resty.Response, error) {
 	client := resty.New()
 	return client.R().SetAuthToken(api.token).Delete(api.apiOrigin + url)
 }
+
+type ErrorResponse struct {
+	Error struct {
+		Code    string `json:"code"`
+		Message string `json:"message"`
+	} `json:"error"`
+}

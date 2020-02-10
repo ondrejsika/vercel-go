@@ -39,10 +39,14 @@ func (api ZeitAPI) ListDomains() (*ListDomainsResponse, error) {
 		return nil, err
 	}
 	respBody := rawResp.Body()
-	var resp ListDomainsResponse
+	if rawResp.StatusCode() == 200 {
+		var resp ListDomainsResponse
+		json.Unmarshal([]byte(respBody), &resp)
+		return &resp, nil
+	}
+	var resp ErrorResponse
 	json.Unmarshal([]byte(respBody), &resp)
-	fmt.Println(resp)
-	return &resp, nil
+	return nil, fmt.Errorf("Zeit API Error: %s: %s", resp.Error.Code, resp.Error.Message)
 }
 
 func (api ZeitAPI) RawAddDomain(name string) (*resty.Response, error) {
