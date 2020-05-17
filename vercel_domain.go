@@ -1,10 +1,10 @@
-package zeit
+package vercel
 
 import (
 	"encoding/json"
 )
 
-func (api ZeitAPI) ListDomains() (*ListDomainsResponse, error) {
+func (api VercelAPI) ListDomains() (*ListDomainsResponse, error) {
 	rawResp, err := api.RawListDomains()
 	if err != nil {
 		return nil, err
@@ -18,7 +18,7 @@ func (api ZeitAPI) ListDomains() (*ListDomainsResponse, error) {
 	return nil, api.unmarshalErrorResponse(respBody)
 }
 
-func (api ZeitAPI) GetDomainPrice(name string) (*DomainPriceResponse, error) {
+func (api VercelAPI) GetDomainPrice(name string) (*DomainPriceResponse, error) {
 	rawResp, err := api.RawGetDomainPrice(name)
 	if err != nil {
 		return nil, err
@@ -32,7 +32,7 @@ func (api ZeitAPI) GetDomainPrice(name string) (*DomainPriceResponse, error) {
 	return nil, api.unmarshalErrorResponse(respBody)
 }
 
-func (api ZeitAPI) CheckDomainAvailibility(name string) (*CheckDomainAvailibilityResponse, error) {
+func (api VercelAPI) CheckDomainAvailibility(name string) (*CheckDomainAvailibilityResponse, error) {
 	rawResp, err := api.RawCheckDomainAvailibility(name)
 	if err != nil {
 		return nil, err

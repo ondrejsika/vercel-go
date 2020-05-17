@@ -1,4 +1,4 @@
-package zeit
+package vercel
 
 type ListDomainsResponse struct {
 	Domains []struct {
