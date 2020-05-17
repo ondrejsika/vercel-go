@@ -1,7 +1,7 @@
-> This repository is in __Work in Progress__ state. If you need something, create an [issue](https://github.com/ondrejsika/zeit-go/issues/new)
+> This repository is in __Work in Progress__ state. If you need something, create an [issue](https://github.com/ondrejsika/vercel-go/issues/new)
 
 
-# zeit-go - Go client for Zeit.co API
+# vercel-go - Go client for Vercel API
 
     2019 Ondrej Sika <ondrej@ondrejsika.com>
-    https://github.com/ondrejsika/zeit-go
+    https://github.com/ondrejsika/vercel-go
