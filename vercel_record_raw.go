@@ -2,7 +2,7 @@ package vercel
 
 import "github.com/go-resty/resty/v2"
 
-func (api VercelAPI) RawListRecords(domain string, type_ string, name string, value string) (*resty.Response, error) {
+func (api VercelAPI) RawListRecords(domain string) (*resty.Response, error) {
 	return api.get("/v2/domains/"+domain+"/records", map[string]string{})
 }
 
